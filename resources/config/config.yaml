@@ -1,0 +1,68 @@
+## Configuration for pose estimation
+# Paths and connection details
+paths:
+  yolo_model_path: "resources/combined_020425_100425.pt"
+  small_cad_model_path: "resources/S_Cap_no_bottom.stl"
+  large_cad_model_path: "resources/L_Cap_no_bottom.stl"
+
+# Tool data
+tool:
+  pointer_tcp: [0.00023, -0.00852, 0.22871, 0.0, 0.0, 0.0]
+  cam_color_sensor_tcp: [-0.0325, -0.0525, 0.0965, 0.0, 0.0, 0.0]
+  cap_gripper_l: [0.0, 0.0, 0.15747, 0.0, 0.0, 0.0]
+  cap_gripper_s: [0.0, 0.0, 0.15247, 0.0, 0.0, 0.0]
+
+# Camera settings
+camera:
+  color_resolution: [640, 480]
+  depth_resolution: [1280, 720]
+  depth_scale: 1000.0  # scale factor to convert depth units to meters
+  intrinsics: [
+        [
+            606.627136230469,
+            0.0,
+            313.754425048828
+        ],
+        [
+            0.0,
+            606.617126464844,
+            252.958282470703
+        ],
+        [
+            0.0,
+            0.0,
+            1.0
+        ]
+    ]
+  distortion_coefficients: [
+        [
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    ]
+
+# YOLO detection parameters
+yolo:
+  confidence_threshold: 0.90
+
+# Pose estimation parameters
+pose_estimation:
+  pnp_method: "SOLVEPNP_SQPNP"  # OpenCV PnP flag name
+  icp_max_correspondence_distance: 0.1
+  icp_max_iterations: 50
+  image_samples: 1000
+
+# Points, targets, zones etc..
+points:
+  cap_object_points: [[0, 0, 0], [-0.005, 0.0235, 0.001], [0.005, 0.0235, 0.001]]
+
+selector:
+  time_threshold: 5.0
+  distance_threshold: 0.05
+  max_pose_age: 10.0
+  orientation_threshold_deg: 15.0
+  depth_threshold: 0.005
+  clearance_region: [[0.011, 0.030, 0], [-0.011, 0.030, 0], [-0.015, 0.060, 0], [0.015, 0.060, 0]]
