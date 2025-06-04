@@ -23,7 +23,7 @@ scipy***
   
 - Clone project into '~/ros2_ws/src/':
   ```bash
-  git clone <URL>
+  git clone https://github.com/Hampusman/indig_examensarbete
   cd ~/ros2_ws # Return to workspace root before building
   ```
 
