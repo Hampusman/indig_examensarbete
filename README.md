@@ -21,7 +21,7 @@ scipy***
 - Install Intel RealSense ROS wrapper following instructions:  
   [RealSense ROS wrapper](https://github.com/IntelRealSense/realsense-ros)
   
-- Clone project from into '~/ros2_ws/src/':
+- Clone project into '~/ros2_ws/src/':
   ```bash
   git clone <URL>
   cd ~/ros2_ws # Return to workspace root before building
