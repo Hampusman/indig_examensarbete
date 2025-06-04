@@ -1,0 +1,8 @@
+std_msgs/Header header
+string type
+float64[6] pose
+float32 speed
+float32 acceleration
+---
+bool success
+string message
