@@ -22,7 +22,7 @@ setup(
     maintainer_email='hampus.h@live.se',
     description='TODO: Package description',
     license='Apache-2.0',
-    tests_require=['pytest'],
+    extras_require={'test': ['pytest']},
     entry_points={
         'console_scripts': [
             'pose_estimation_node = pose_estimation.pose_estimation_node:main',
