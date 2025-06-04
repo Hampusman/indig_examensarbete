@@ -6,6 +6,11 @@ Ubuntu 22.04 LTS
 ROS2 Humble  
 Python 3.10  
 
+***potential python packages not managed by rosdep  
+OpenCV  
+open3D  
+ur-rtde  
+scipy***
 ### Installation
 - Create a ROS2 workspace:
   ```bash
@@ -13,13 +18,13 @@ Python 3.10
   cd ~/ros2_ws/src/
   ```
 
-- Install the camera wrapper according to:  
-  [ROS Wrapper for Intel(R) RealSense(TM) Cameras](https://github.com/IntelRealSense/realsense-ros)
+- Install Intel RealSense ROS wrapper following instructions:  
+  [RealSense ROS wrapper](https://github.com/IntelRealSense/realsense-ros)
   
 - Clone project from into '~/ros2_ws/src/':
   ```bash
   git clone <URL>
-  cd ~/ros2_ws
+  cd ~/ros2_ws # Return to workspace root before building
   ```
 
 - Install dependencies:
@@ -91,14 +96,18 @@ For the entire list of parameters type `ros2 param list`.
 For reading a parameter value use `ros2 param get <node> <parameter_name>` 
 For setting a new value for a parameter use `ros2 param set <node> <parameter_name> <value>`
 - **pose_estimation**:
-  - debug(bool): Default is false, if set to true enables extra messages for debugging purposes.
+  - debug (default: false): If set to true enables extra messages for debugging purposes.
 - **pose_monitoring**:
-  - auto(bool): Default is true, if set to true automatic mode is enabled and the stability tracker is used to determine when to trigger a pick sequence. If set to false, then the trigger service can be called manually with:
+  - auto (default: true): If set to true automatic mode is enabled and the stability tracker is used to determine when to trigger a pick sequence. If set to false, then the trigger service can be called manually with:
     ```bash
     ros2 service call /robot/trigger interfaces/srv/TriggerPickSequence
     ```
-  - debug(bool): Default is false, if set to true enables extra messages for debugging purposes.
+  - debug (default: false): Default is false, if set to true enables extra messages for debugging purposes.
 - **robot_controller_py**:
-  - ip(string): Default is "192.168.1.102", ip of robot and gripper.
-  - port(integer): Default is 63352, port of gripper where 63352 is the default used by Robotiq grippers.
-  - force(integer): Default is 50, force used by the gripper.
+  - ip (default: "192.168.1.102"): Ip of robot and gripper.
+  - port (default: 63352): Port of gripper where 63352 is the default used by Robotiq grippers.
+  - force (default: 50): Force used by the gripper.
+- **visualization**:
+  - keypoints (default: true): Enables the visualization of keypoints. 
+  - estimations (default: true): Enables the visualization of estimations.
+  - feasible (default: true): Enables the visualization of feasibility filter. 
